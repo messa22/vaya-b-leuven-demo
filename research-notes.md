@@ -18,6 +18,23 @@
 
 Vaya B heeft al veel reviews en lokale bekendheid, maar geen sterke eigen website zichtbaar. De website moet vooral vertrouwen en directe afspraak-conversie brengen: bellen, route openen, diensten tonen en echte salonresultaten laten zien.
 
+## Design-upgrade inspiratie
+
+- Sterke salon/barber websites zetten booking direct bovenaan, gebruiken grote fotografie, tonen services duidelijk en bouwen vertrouwen met portfolio/reviews.
+- De nieuwe demo gebruikt daarom:
+  - full-bleed premium hero met directe bel-CTA
+  - vaste afspraakkaart boven de vouw
+  - duidelijke serviceblokken voor heren, dames, kleur en kinderen
+  - echte Google Business foto als salonbewijs
+  - review/statistieksectie
+  - mobiele sticky belknop
+
+## Generated asset
+
+- Tool: built-in imagegen
+- Workspace asset: `assets/vaya-b-hero.jpg`
+- Prompt: premium photorealistic modern hair salon/barber hero, black/cream/gold palette, stylist finishing a haircut, clean negative space on the left, no text or logo.
+
 ## Bronnen
 
 - Bizique: https://www.bizique.be/nl/vaya-b_1z-0493-41-27-46
@@ -26,3 +43,6 @@ Vaya B heeft al veel reviews en lokale bekendheid, maar geen sterke eigen websit
 - MUL House: https://lcmbelfortmulhouse.fr/kapsalon-davin-vaya-b/
 - Companyweb: https://www.companyweb.be/en/0550459360/davin-company
 - Pappers: https://www.pappers.be/fr/company/davin-company-0550459360
+- Salon inspiration: https://glossgenius.com/blog/hair-salon-websites
+- Barber inspiration: https://nanoglobals.com/barbershop-websites/
+- Salon UX reference: https://webflow.com/blog/web-design-for-hair-salons

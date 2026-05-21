@@ -1,12 +1,14 @@
 :root {
-  --ink: #111111;
-  --charcoal: #1c1c1c;
-  --paper: #f7f5f0;
+  color-scheme: light;
+  --ink: #101010;
+  --charcoal: #181818;
+  --paper: #f6f3ee;
   --white: #ffffff;
-  --muted: #696969;
-  --line: #ded8ce;
-  --gold: #c7a463;
-  --gold-soft: #efe5d1;
+  --muted: #6c6963;
+  --line: #dfd7cc;
+  --gold: #c9a461;
+  --gold-dark: #a7833d;
+  --gold-soft: #efe2c7;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.16);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -35,18 +37,18 @@ img {
   max-width: 100%;
 }
 
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 20;
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 24px;
   min-height: 82px;
-  padding: 0 clamp(18px, 5vw, 70px);
-  background: rgba(247, 245, 240, 0.92);
-  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  gap: 24px;
+  padding: 0 clamp(18px, 5vw, 72px);
+  background: rgba(246, 243, 238, 0.9);
+  border-bottom: 1px solid rgba(16, 16, 16, 0.08);
   backdrop-filter: blur(16px);
 }
 
@@ -54,11 +56,10 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-size: 22px;
-  font-weight: 950;
+  min-width: 0;
 }
 
-.brand span {
+.brand-mark {
   display: grid;
   width: 44px;
   height: 44px;
@@ -66,35 +67,72 @@ img {
   border-radius: 50%;
   background: var(--ink);
   color: var(--gold);
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 950;
 }
 
-.topbar nav {
-  display: flex;
-  gap: clamp(18px, 4vw, 42px);
-  color: #303030;
+.brand strong,
+.brand small {
+  display: block;
+  line-height: 1;
+}
+
+.brand strong {
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.brand small {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
   font-weight: 850;
+  text-transform: uppercase;
 }
 
-.call {
+.site-header nav {
+  display: flex;
+  gap: clamp(18px, 3vw, 42px);
+  color: #282521;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.header-action {
   justify-self: end;
   border: 1px solid var(--ink);
   border-radius: 999px;
   padding: 12px 18px;
-  font-weight: 900;
+  font-size: 14px;
+  font-weight: 950;
 }
 
 .hero {
+  position: relative;
+  min-height: 100svh;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.78fr);
-  gap: clamp(34px, 7vw, 92px);
-  align-items: center;
-  min-height: calc(100vh - 82px);
-  padding: clamp(60px, 8vw, 110px) clamp(20px, 7vw, 92px);
+  align-items: end;
+  overflow: hidden;
+  padding: 150px clamp(20px, 7vw, 92px) 58px;
   background:
-    radial-gradient(circle at 78% 22%, rgba(199, 164, 99, 0.22), transparent 26rem),
-    linear-gradient(135deg, #111 0%, #1b1b1b 50%, #2b2418 100%);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.72) 44%, rgba(0, 0, 0, 0.26) 100%),
+    url("assets/vaya-b-hero.jpg") center right / cover no-repeat,
+    #111;
   color: white;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 72% 35%, rgba(201, 164, 97, 0.22), transparent 18rem),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.48), transparent 45%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(770px, 100%);
 }
 
 .eyebrow {
@@ -107,44 +145,47 @@ img {
 }
 
 .hero h1,
-.section-title h2,
-.proof h2,
-.visual-band h2,
-.visit h2 {
+.intro h2,
+.section-heading h2,
+.work h2,
+.reviews h2,
+.visit h2,
+.final-cta h2 {
   margin: 0;
-  font-size: clamp(42px, 7vw, 86px);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
+  font-size: clamp(44px, 7vw, 92px);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
   font-weight: 950;
 }
 
-.hero-copy > p:not(.eyebrow),
-.proof p,
-.visual-band p {
-  max-width: 640px;
-  color: rgba(255, 255, 255, 0.72);
+.hero-text {
+  width: min(640px, 100%);
+  margin: 28px 0 0;
+  color: rgba(255, 255, 255, 0.78);
   font-size: clamp(18px, 2vw, 22px);
-  line-height: 1.6;
+  line-height: 1.58;
 }
 
 .hero-actions,
-.trust,
+.trust-row,
 .visit-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+  align-items: center;
   margin-top: 30px;
 }
 
 .btn {
   display: inline-flex;
-  min-height: 52px;
+  min-height: 54px;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
   padding: 0 24px;
+  border: 1px solid transparent;
   font-weight: 950;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
 .btn:hover {
@@ -152,147 +193,236 @@ img {
   box-shadow: var(--shadow);
 }
 
-.btn.primary,
+.btn.gold,
 .btn.dark {
   background: var(--gold);
   color: #111;
 }
 
-.btn.ghost {
-  border: 1px solid rgba(255, 255, 255, 0.58);
+.btn.glass {
+  border-color: rgba(255, 255, 255, 0.46);
+  background: rgba(255, 255, 255, 0.08);
   color: white;
+  backdrop-filter: blur(10px);
 }
 
-.btn.dark-text {
+.btn.outline {
   border-color: var(--ink);
+  background: transparent;
   color: var(--ink);
 }
 
-.trust span {
+.trust-row span {
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   padding: 9px 13px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 13px;
   font-weight: 850;
+  backdrop-filter: blur(10px);
 }
 
-.hero-card {
-  overflow: hidden;
-  background: var(--white);
+.booking-card {
+  position: absolute;
+  right: clamp(20px, 6vw, 92px);
+  bottom: 58px;
+  z-index: 3;
+  width: min(360px, calc(100% - 40px));
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.94);
   color: var(--ink);
   box-shadow: var(--shadow);
 }
 
-.hero-card img {
-  width: 100%;
-  height: min(620px, 72vh);
-  object-fit: cover;
-  object-position: center;
-}
-
-.hero-card div {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 22px;
-}
-
-.hero-card strong {
-  font-size: 18px;
-}
-
-.hero-card span {
-  color: var(--muted);
-  font-weight: 800;
-}
-
-.quick-strip {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin: -34px clamp(18px, 5vw, 70px) 0;
-  padding: 28px;
-  background: var(--white);
-  box-shadow: var(--shadow);
-}
-
-.quick-strip strong,
-.quick-strip span {
-  display: block;
-}
-
-.quick-strip strong {
-  font-size: clamp(24px, 4vw, 38px);
+.booking-card h2 {
+  margin: 8px 0 22px;
+  font-size: 25px;
+  line-height: 1.04;
   letter-spacing: -0.04em;
 }
 
-.quick-strip span {
-  margin-top: 5px;
-  color: var(--muted);
+.card-kicker {
+  color: var(--gold-dark);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.section,
-.proof,
+.booking-card a {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--ink);
+  color: white;
+  font-weight: 950;
+}
+
+.intro,
+.services,
+.work,
+.reviews,
 .visit,
-.visual-band {
+.final-cta {
   padding: clamp(72px, 9vw, 130px) clamp(20px, 7vw, 92px);
 }
 
-.section-title {
+.intro {
   display: grid;
-  grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.8fr);
+  gap: clamp(34px, 7vw, 90px);
+  align-items: start;
+}
+
+.intro h2,
+.section-heading h2,
+.work h2,
+.reviews h2,
+.visit h2,
+.final-cta h2 {
+  font-size: clamp(34px, 5vw, 66px);
+}
+
+.intro-points {
+  display: grid;
+  gap: 14px;
+}
+
+.intro-points article {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 22px;
+  background: white;
+  border: 1px solid var(--line);
+}
+
+.intro-points strong {
+  color: var(--gold-dark);
+  font-size: 15px;
+}
+
+.intro-points span {
+  color: #2f2c27;
+  font-weight: 850;
+  line-height: 1.4;
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.56fr) minmax(0, 1fr);
   gap: clamp(28px, 6vw, 82px);
   align-items: start;
   margin-bottom: 42px;
 }
 
-.section-title h2,
-.proof h2,
-.visual-band h2,
-.visit h2 {
-  font-size: clamp(34px, 5vw, 66px);
-}
-
-.service-grid {
+.service-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
 
-.service-grid article {
-  min-height: 260px;
+.service-list article {
+  display: flex;
+  min-height: 305px;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 28px;
-  background: var(--white);
-  border: 1px solid var(--line);
+  background: var(--ink);
+  color: white;
 }
 
-.service-grid span {
+.service-list span {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.service-list h3 {
+  margin: 20px 0 12px;
+  font-size: 25px;
+  line-height: 1.05;
+}
+
+.service-list p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.55;
+}
+
+.service-list a {
+  margin-top: 30px;
   color: var(--gold);
   font-weight: 950;
 }
 
-.service-grid h3 {
-  margin: 44px 0 12px;
-  font-size: 24px;
-}
-
-.service-grid p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.58;
-}
-
-.proof {
+.work {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.7fr);
-  gap: clamp(32px, 7vw, 90px);
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+  gap: clamp(34px, 7vw, 90px);
+  align-items: center;
+  background: white;
+}
+
+.work-copy p:not(.eyebrow),
+.review-main p,
+.final-cta p {
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.work-gallery {
+  display: grid;
+  grid-template-columns: 1.3fr 0.72fr;
+  gap: 14px;
+  align-items: end;
+}
+
+figure {
+  margin: 0;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+figure img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+
+.wide-shot img {
+  object-position: right center;
+}
+
+.work-gallery figure:not(.wide-shot) img {
+  height: 430px;
+}
+
+figcaption {
+  padding: 16px 18px;
+  color: var(--muted);
+  font-weight: 850;
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.7fr);
+  gap: clamp(34px, 7vw, 90px);
   align-items: center;
   background: var(--ink);
   color: white;
+}
+
+.review-main p {
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .stats {
@@ -311,7 +441,7 @@ img {
 
 .stats strong {
   color: var(--gold);
-  font-size: clamp(38px, 6vw, 66px);
+  font-size: clamp(40px, 7vw, 76px);
   line-height: 1;
 }
 
@@ -321,35 +451,17 @@ img {
   text-align: right;
 }
 
-.visual-band {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
-  gap: clamp(32px, 7vw, 90px);
-  align-items: center;
-}
-
-.visual-band img {
-  width: 100%;
-  height: 640px;
-  object-fit: cover;
-  box-shadow: var(--shadow);
-}
-
-.visual-band p:not(.eyebrow) {
-  color: var(--muted);
-}
-
 .visit {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.72fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.72fr);
   gap: 22px;
 }
 
 .visit-card,
 .hours {
-  padding: clamp(28px, 5vw, 54px);
-  background: var(--white);
+  background: white;
   border: 1px solid var(--line);
+  padding: clamp(28px, 5vw, 54px);
 }
 
 address {
@@ -387,77 +499,140 @@ dd {
   text-align: right;
 }
 
+.final-cta {
+  text-align: center;
+  background:
+    linear-gradient(90deg, rgba(16, 16, 16, 0.84), rgba(16, 16, 16, 0.74)),
+    url("assets/vaya-b-hero.jpg") center right / cover no-repeat;
+  color: white;
+}
+
+.final-cta p {
+  width: min(690px, 100%);
+  margin: 22px auto 30px;
+  color: rgba(255, 255, 255, 0.76);
+}
+
 footer {
   display: flex;
   justify-content: space-between;
   gap: 18px;
   padding: 32px clamp(20px, 7vw, 92px);
   background: var(--ink);
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 footer strong {
   color: white;
 }
 
-@media (max-width: 900px) {
-  .topbar {
+.mobile-sticky {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 50;
+  display: none;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #111;
+  box-shadow: var(--shadow);
+  font-weight: 950;
+}
+
+@media (max-width: 1040px) {
+  .site-header {
     grid-template-columns: 1fr auto;
   }
 
-  .topbar nav {
+  .site-header nav {
     display: none;
   }
 
-  .hero,
-  .section-title,
-  .proof,
-  .visual-band,
+  .booking-card {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: min(420px, 100%);
+    margin-top: 34px;
+  }
+
+  .hero {
+    align-items: center;
+  }
+
+  .intro,
+  .section-heading,
+  .work,
+  .reviews,
   .visit {
     grid-template-columns: 1fr;
   }
 
-  .hero {
-    padding-top: 54px;
-  }
-
-  .quick-strip {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .service-grid {
+  .service-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .visual-band img {
-    height: 430px;
   }
 }
 
-@media (max-width: 560px) {
-  .call {
+@media (max-width: 680px) {
+  .site-header {
+    min-height: 72px;
+    padding: 0 16px;
+  }
+
+  .header-action {
     display: none;
   }
 
-  .service-grid {
-    grid-template-columns: 1fr;
+  .hero {
+    min-height: 92svh;
+    padding: 112px 16px 38px;
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.78) 58%, rgba(0, 0, 0, 0.54) 100%),
+      url("assets/vaya-b-hero.jpg") center right / cover no-repeat,
+      #111;
   }
 
   .hero h1 {
     font-size: 43px;
   }
 
-  .hero-card img {
-    height: 460px;
-  }
-
-  .btn,
-  .quick-strip .btn {
+  .hero-actions .btn,
+  .booking-card a,
+  .visit-actions .btn {
     width: 100%;
   }
 
+  .service-list,
+  .work-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .work-gallery figure img,
+  .work-gallery figure:not(.wide-shot) img {
+    height: 420px;
+  }
+
+  .stats article,
+  dl div,
   footer {
+    align-items: flex-start;
     flex-direction: column;
+  }
+
+  .stats span,
+  dd {
+    text-align: left;
+  }
+
+  .mobile-sticky {
+    display: flex;
+  }
+
+  body {
+    padding-bottom: 76px;
   }
 }
